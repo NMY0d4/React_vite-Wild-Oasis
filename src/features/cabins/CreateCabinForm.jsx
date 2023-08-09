@@ -31,15 +31,15 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   }
 
-  function onError(errors) {
-    // console.log(errors);
-  }
+  // function onError(errors) {
+  //   // console.log(errors);
+  // }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit /* , onError*/)}>
       <FormRow label='Cabine Name' error={errors?.name?.message || null}>
         <Input
           type='text'
@@ -50,7 +50,6 @@ function CreateCabinForm() {
           })}
         />
       </FormRow>
-
       <FormRow
         label='Maximum capacity'
         error={errors?.maxCapacity?.message || null}
@@ -68,7 +67,6 @@ function CreateCabinForm() {
           })}
         />
       </FormRow>
-
       <FormRow
         label='Regular price'
         error={errors?.regularPrice?.message || null}
@@ -86,7 +84,6 @@ function CreateCabinForm() {
           })}
         />
       </FormRow>
-
       <FormRow label='Discount' error={errors?.discount?.message || null}>
         <Input
           type='number'
@@ -96,12 +93,11 @@ function CreateCabinForm() {
           {...register('discount', {
             required: 'This field is required',
             validate: (value) =>
-              value * 4 < getValues().regularPrice ||
+              value * 4 <= getValues().regularPrice ||
               'Discount should be less than 25% of the regular price.',
           })}
         />
       </FormRow>
-
       <FormRow
         label='Description for website'
         error={errors?.description?.message || null}
@@ -116,12 +112,16 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label='Cabin photo' error={errors?.image?.message || null}>
-        <FileInput id='image' accept='image/*' />
+        <FileInput
+          id='image'
+          accept='image/*'
+          {...register('image', { required: 'This field is required' })}
+          type='file'
+        />
       </FormRow>
 
       <FormRow>
         {/* type is an HTML attribute! */}
-
         <Button variation='secondary' type='reset'>
           Cancel
         </Button>
