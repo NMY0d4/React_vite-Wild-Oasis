@@ -12,7 +12,7 @@ import FormRow from '../../ui/FormRow';
 import { useForm } from 'react-hook-form';
 import { createEditCabin } from '../../services/apiCabins';
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -27,11 +27,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     mutationFn: createEditCabin,
     onSuccess: () => {
       toast.success('Cabin successfully created');
-
       queryClient.invalidateQueries({
         queryKey: ['cabins'],
       });
       reset();
+      onShowForm(false);
     },
     onError: (err) => toast.error(err.message),
   });
@@ -45,6 +45,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
         queryKey: ['cabins'],
       });
       reset();
+      onShowForm(false);
     },
     onError: (err) => toast.error(err.message),
   });
