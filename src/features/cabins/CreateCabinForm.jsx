@@ -27,8 +27,7 @@ function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
     const image = typeof data.image === 'string' ? data.image : data.image[0];
 
     const onSuccessOptions = {
-      onSuccess: (data) => {
-        console.log(data);
+      onSuccess: () => {
         reset();
         onShowForm(false);
       },
