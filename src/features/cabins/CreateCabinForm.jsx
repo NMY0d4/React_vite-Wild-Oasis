@@ -10,14 +10,14 @@ import { useForm } from 'react-hook-form';
 import { useCreateCabin } from './useCreateCabin';
 import { useEditCabin } from './useEditCabin';
 
-function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
+function CreateCabinForm({ cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
-  const { createCabin, isCreating } = useCreateCabin(onShowForm);
-  const { editCabin, isEditing } = useEditCabin(onShowForm);
+  const { createCabin, isCreating } = useCreateCabin();
+  const { editCabin, isEditing } = useEditCabin();
 
   const { errors } = formState;
 
@@ -29,7 +29,6 @@ function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
     const onSuccessOptions = {
       onSuccess: () => {
         reset();
-        onShowForm(false);
       },
     };
 
