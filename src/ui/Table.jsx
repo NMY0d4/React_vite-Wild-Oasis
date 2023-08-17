@@ -1,4 +1,6 @@
-import styled from "styled-components";
+/* eslint-disable react/prop-types */
+import { createContext } from 'react';
+import styled from 'styled-components';
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -58,3 +60,11 @@ const Empty = styled.p`
   text-align: center;
   margin: 2.4rem;
 `;
+
+const TableContext = createContext();
+
+function Table({ children }) {
+  return <TableContext.Provider value={{}}>{children}</TableContext.Provider>;
+}
+
+export default Table;

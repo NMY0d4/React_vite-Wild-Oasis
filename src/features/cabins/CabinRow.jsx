@@ -87,6 +87,7 @@ function CabinRow({ cabin }) {
           <HiSquare2Stack onClick={handleDuplicate} disabled={isCreating} />
         </button>
         <Modal>
+          {/* Edit modal */}
           <Modal.Open opens='edit'>
             <button>
               <HiPencil />
@@ -95,12 +96,13 @@ function CabinRow({ cabin }) {
           <Modal.Window name='edit'>
             <CreateCabinForm cabinToEdit={cabin} />
           </Modal.Window>
-          <Modal.Open>
+          {/* Delete modal */}
+          <Modal.Open opens='delete'>
             <button>
               <HiTrash />
             </button>
           </Modal.Open>
-          <Modal.Window>
+          <Modal.Window name='delete'>
             <ConfirmDelete
               resourceName='cabin'
               disabled={isDeleting}
