@@ -9,7 +9,6 @@ import Spinner from '../../ui/Spinner';
 function BookingTable() {
   const { isLoading, bookings } = useBookings();
   const [searchParams] = useSearchParams();
-  console.log(bookings);
 
   if (isLoading) return <Spinner />;
   if (!bookings.length) return <Empty resourceName='bookings' />;
