@@ -3,7 +3,6 @@ import Table from '../../ui/Table';
 import Menus from '../../ui/Menus';
 import Empty from '../../ui/Empty';
 import { useBookings } from './useBookings';
-import { useSearchParams } from 'react-router-dom';
 import Spinner from '../../ui/Spinner';
 
 function BookingTable() {
