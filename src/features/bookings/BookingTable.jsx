@@ -8,7 +8,6 @@ import Spinner from '../../ui/Spinner';
 
 function BookingTable() {
   const { isLoading, bookings } = useBookings();
-  const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
   if (!bookings.length) return <Empty resourceName='bookings' />;
@@ -17,7 +16,7 @@ function BookingTable() {
     <Menus>
       <Table columns='0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem'>
         <Table.Header>
-          <div>Cabin</div>
+          <div>booking</div>
           <div>Guest</div>
           <div>Dates</div>
           <div>Status</div>
