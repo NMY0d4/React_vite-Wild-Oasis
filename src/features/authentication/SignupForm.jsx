@@ -22,7 +22,7 @@ function SignupForm() {
   }
 
   return (
-    <Form onSubmit={() => handleSubmit(onSubmit)} noValidate>
+    <Form onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormRow label='Full name' error={errors?.fullName?.message}>
         <Input
           type='text'
