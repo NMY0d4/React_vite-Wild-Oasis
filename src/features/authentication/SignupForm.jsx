@@ -22,7 +22,7 @@ function SignupForm() {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <Form onSubmit={() => handleSubmit(onSubmit)} noValidate>
       <FormRow label='Full name' error={errors?.fullName?.message}>
         <Input
           type='text'
@@ -31,7 +31,6 @@ function SignupForm() {
           {...register('fullName', { required: 'This field is required' })}
         />
       </FormRow>
-
       <FormRow label='Email address' error={errors?.email?.message}>
         <Input
           type='email'
