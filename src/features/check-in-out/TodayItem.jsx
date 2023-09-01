@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -18,3 +18,9 @@ const StyledTodayItem = styled.li`
 const Guest = styled.div`
   font-weight: 500;
 `;
+
+function TodayItem() {
+  return <div></div>;
+}
+
+export default TodayItem;
