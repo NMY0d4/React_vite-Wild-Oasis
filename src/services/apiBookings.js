@@ -6,7 +6,7 @@ export async function getBookings({ filter, sortBy, page }) {
   let query = supabase
     .from('bookings')
     .select(
-      'id, created_at, startDate, endDate,numNights, numGuests,status,totalPrice, cabins(name), guests(fullName, email)',
+      'id, created_at, startDate, endDate, numNights, numGuests,status, totalPrice, cabins(name), guests(fullName, email)',
       { count: 'exact' }
     );
 
@@ -102,6 +102,7 @@ export async function getStaysTodayActivity() {
     console.error(error);
     throw new Error('Bookings could not get loaded');
   }
+
   return data;
 }
 

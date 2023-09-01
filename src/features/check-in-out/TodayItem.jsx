@@ -1,4 +1,7 @@
+/* eslint-disable react/prop-types */
 import styled from 'styled-components';
+import Tag from '../../ui/Tag';
+import { Flag } from '../../ui/Flag';
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -19,8 +22,16 @@ const Guest = styled.div`
   font-weight: 500;
 `;
 
-function TodayItem() {
-  return <div></div>;
+function TodayItem({ activity }) {
+  const { id, status, guests, numNight } = activity;
+  return (
+    <StyledTodayItem>
+      {status === 'unconfirmed' && <Tag type='green'>Arriving</Tag>}
+      {status === 'checked-in' && <Tag type='blue'>Departing</Tag>}
+      <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
+      <Guest>{guests.fullName}</Guest>
+    </StyledTodayItem>
+  );
 }
 
 export default TodayItem;
